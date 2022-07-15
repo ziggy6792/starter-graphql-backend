@@ -6,13 +6,9 @@ import express from 'express';
 // import { setSamplesInContainer } from './recipe/recipe.samples';
 import { v4 as uuidv4 } from 'uuid';
 import { getSchema } from './graphql-setup/get-schema';
-import { connectMongo } from './utils/database';
 import Context from './graphql-setup/context';
 
 async function bootstrap() {
-  // create mongoose connection
-  await connectMongo();
-
   const schema = getSchema();
   // create GraphQL server
   const server = new ApolloServer({

@@ -11,15 +11,11 @@
     "update": "npx ncu -u && yarn install",
     "build": "npx ttsc --p ./tsconfig.json",
     "start:build": "node dist/index.js",
-    "start": "run-p start:local start:mongo:db start:mongo:ui",
-    "start:local": "ts-node-dev -r tsconfig-paths/register --respawn src/index.ts",
-    "start:mongo:db": "docker-compose up",
-    "start:mongo:ui": "mongo-gui -u mongodb://localhost:27016/"
+    "start": "ts-node-dev -r tsconfig-paths/register --respawn src/index.ts"
   },
   "author": "Simon Verhoeven",
   "license": "MIT",
   "dependencies": {
-    "@typegoose/typegoose": "^9.0.1",
     "@types/jest": "^27.0.2",
     "@types/uuid": "^8.3.1",
     "apollo-server-express": "^3.3.0",
@@ -31,9 +27,6 @@
     "graphql": "^15.6.0",
     "moment": "^2.29.1",
     "moment-timezone": "^0.5.33",
-    "mongo-gui": "^0.0.13",
-    "mongodb": "^4.1.2",
-    "mongoose": "^6.0.7",
     "npm-run-all": "^4.1.5",
     "reflect-metadata": "^0.1.13",
     "source-map-support": "^0.5.20",
