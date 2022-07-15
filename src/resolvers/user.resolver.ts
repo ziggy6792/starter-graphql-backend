@@ -23,7 +23,12 @@ const users: User[] = [
 @Resolver((of) => User)
 export class UserResolver {
   @Query(() => [User])
-  async listUsers(): Promise<User[]> {
+  listUsers(): User[] {
+    return users;
+  }
+
+  @Query(() => [User])
+  searchUsers(): User[] {
     return users;
   }
 }
