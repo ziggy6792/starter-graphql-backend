@@ -47,7 +47,7 @@ async function bootstrap() {
   await server.start();
   server.applyMiddleware({ app });
 
-  const port = 4000;
+  const port = 4200;
 
   app.listen(port, () => console.log(`listening on port: ${port}`));
 }
