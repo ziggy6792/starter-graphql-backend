@@ -1,8 +1,9 @@
 /* eslint-disable no-useless-constructor */
 
-import { Query, Resolver } from 'type-graphql';
+import { Arg, Query, Resolver } from 'type-graphql';
 import { Service } from 'typedi';
 import { User } from 'src/entities/user.entity';
+import { ISearchUserInput } from 'src/inputs/user';
 
 const users: User[] = [
   {
@@ -28,7 +29,7 @@ export class UserResolver {
   }
 
   @Query(() => [User])
-  searchUsers(): User[] {
+  searchUsers(@Arg('input', { nullable: true }) input: ISearchUserInput): User[] {
     return users;
   }
 }
