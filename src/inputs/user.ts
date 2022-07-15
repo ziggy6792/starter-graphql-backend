@@ -1,7 +1,7 @@
 import { Field, InputType, Int } from 'type-graphql';
 
 @InputType()
-export class ISearchUserInput {
+export class SearchUserInput {
   @Field()
   name?: string;
 
