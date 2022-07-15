@@ -8,16 +8,22 @@ import _ from 'lodash';
 
 const users: User[] = [
   {
-    name: 'Simon Verhoeven',
+    firstName: 'Simon',
+    lastName: 'Verhoeven',
     age: 30,
+    dob: new Date(),
   },
   {
-    name: 'Simon Pegg',
+    firstName: 'Simon',
+    lastName: 'Pegg',
     age: 52,
+    dob: new Date(),
   },
   {
-    name: 'Ben Verhoeven',
+    firstName: 'Ben',
+    lastName: 'Verhoeven',
     age: 31,
+    dob: new Date(),
   },
 ];
 
@@ -35,8 +41,8 @@ export class UserResolver {
       if (input.age) {
         if (input.age !== user.age) return false;
       }
-      if (input.name) {
-        if (!user.name?.toLowerCase().includes(input.name.toLowerCase())) return false;
+      if (input.lastName) {
+        if (!user.lastName?.toLowerCase().includes(input.lastName.toLowerCase())) return false;
       }
       return true;
     });
