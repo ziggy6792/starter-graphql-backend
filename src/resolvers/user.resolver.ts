@@ -4,6 +4,7 @@ import { Arg, Query, Resolver } from 'type-graphql';
 import { Service } from 'typedi';
 import { User } from 'src/entities/user.entity';
 import { ISearchUserInput } from 'src/inputs/user';
+import _ from 'lodash';
 
 const users: User[] = [
   {
@@ -29,7 +30,17 @@ export class UserResolver {
   }
 
   @Query(() => [User])
-  searchUsers(@Arg('input', { nullable: true }) input: ISearchUserInput): User[] {
-    return users;
+  searchUsers(@Arg('input') input: ISearchUserInput): User[] {
+    const searchResults = _.filter(users, (user) => {
+      if (input.age) {
+        if (input.age !== user.age) return false;
+      }
+      if (input.name) {
+        if (!user.name?.toLowerCase().includes(input.name.toLowerCase())) return false;
+      }
+      return true;
+    });
+
+    return searchResults;
   }
 }

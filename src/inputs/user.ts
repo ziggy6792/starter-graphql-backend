@@ -1,10 +1,10 @@
-import { Field, InputType } from 'type-graphql';
+import { Field, InputType, Int } from 'type-graphql';
 
 @InputType()
 export class ISearchUserInput {
   @Field()
   name?: string;
 
-  @Field()
+  @Field((type) => Int, { nullable: true })
   age?: number;
 }
